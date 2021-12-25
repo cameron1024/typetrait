@@ -1,0 +1,11 @@
+error[E0277]: the trait bound `Illegal: StatusSealed` is not satisfied
+ --> tests/ui/fail/unsafe_impl.rs:8:6
+  |
+8 | impl Status for Illegal {}
+  |      ^^^^^^ the trait `StatusSealed` is not implemented for `Illegal`
+  |
+note: required by a bound in `Status`
+ --> tests/ui/fail/unsafe_impl.rs:4:5
+  |
+4 |     Status = Enabled | Disabled
+  |     ^^^^^^ required by this bound in `Status`

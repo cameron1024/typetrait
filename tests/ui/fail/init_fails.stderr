@@ -1,0 +1,14 @@
+error[E0423]: expected value, found enum `Enabled`
+  --> tests/ui/fail/init_fails.rs:2:19
+   |
+2  |     let enabled = Enabled;
+   |                   ^^^^^^^
+   |
+note: the enum is defined here
+  --> tests/ui/fail/init_fails.rs:9:1
+   |
+9  | / typetrait::union! {
+10 | |     pub Status = Enabled | Disabled
+11 | | }
+   | |_^
+   = note: this error originates in the macro `typetrait::union` (in Nightly builds, run with -Z macro-backtrace for more info)

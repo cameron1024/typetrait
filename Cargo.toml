@@ -2,6 +2,8 @@
 name = "typetrait"
 version = "0.1.0"
 edition = "2021"
+description = "Helper macro to generate types for typestate programming"
+license = "MIT"
 
 [lib]
 proc-macro = true
@@ -14,6 +16,3 @@ convert_case = "0.4"
 
 [dev-dependencies]
 trybuild = "1.0"
-
-[features]
-init = []

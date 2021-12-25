@@ -4,7 +4,6 @@ use quote::quote;
 
 use crate::parse::Single;
 
-
 pub fn generate(
     Single {
         attributes,
@@ -14,7 +13,6 @@ pub fn generate(
         ..
     }: Single,
 ) -> TokenStream {
-    let init = cfg!(feature = "init");
     let private = format!(
         "__{}_private",
         trait_name.to_string().to_case(convert_case::Case::Snake)
@@ -26,11 +24,7 @@ pub fn generate(
     );
 
     let types = struct_names.iter().map(|ident| {
-        let ty = if init {
-            quote! { #visibility struct #ident; }
-        } else {
-            quote! { #visibility enum #ident {} }
-        };
+        let ty = quote! { #visibility enum #ident {} };
         quote! {
             #(#attributes)*
             #ty

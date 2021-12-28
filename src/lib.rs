@@ -68,6 +68,18 @@ pub fn union(tokens: TokenStream) -> TokenStream {
     union::union_impl(tokens)
 }
 
+/// Generate blanket implementations for traits
+///
+/// For example:
+/// ```
+/// # use typetrait::blanket;
+/// blanket!{ pub ThreadSafe = Send + Sync + 'static }
+/// ```
+/// expands (roughly) to:
+/// ```
+/// pub trait ThreadSafe: Send + Sync + 'static {}
+/// impl<T> ThreadSafe for T where T: Send + Sync + 'static {}
+/// ```
 #[proc_macro]
 pub fn blanket(tokens: TokenStream) -> TokenStream {
     blanket::blanket_impl(tokens)

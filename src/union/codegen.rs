@@ -1,8 +1,7 @@
+use super::parse::Single;
 use convert_case::Casing;
 use proc_macro2::TokenStream;
 use quote::quote;
-
-use crate::parse::Single;
 
 pub fn generate(
     Single {

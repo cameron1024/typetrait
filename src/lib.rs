@@ -1,10 +1,7 @@
 use proc_macro::TokenStream;
-use syn::parse_macro_input;
 
-use crate::{codegen::generate, parse::Single};
-
-mod codegen;
-mod parse;
+mod union;
+mod blanket;
 
 /// Generate boilerplate for a trait and unit structs to represent a set of possible states
 ///
@@ -68,9 +65,12 @@ mod parse;
 /// With this API, using unvalidated data can now be prevented at compile time.
 #[proc_macro]
 pub fn union(tokens: TokenStream) -> TokenStream {
-    let single = parse_macro_input!(tokens as Single);
-    let tokens = generate(single);
-    tokens.into()
+    union::union_impl(tokens)
+}
+
+#[proc_macro]
+pub fn blanket(tokens: TokenStream) -> TokenStream {
+    blanket::blanket_impl(tokens)
 }
 
 #[cfg(test)]

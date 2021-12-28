@@ -1,6 +1,6 @@
 [package]
 name = "typetrait"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Helper macro to generate types for typestate programming"
 license = "MIT"
